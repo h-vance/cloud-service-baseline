@@ -1,12 +1,14 @@
+[![Lint](https://github.com/harrison-vc/cloud-service-baseline/actions/workflows/lint.yml/badge.svg)](https://github.com/harrison-vc/cloud-service-baseline/actions/workflows/lint.yml)
+
 # cloud-service-baseline
 
 A minimal but production-ready cloud system architecture. This repository serves as a baseline for deploying, monitoring, and troubleshooting cloud-native applications.
 
-## Prerequisites 
+## Prerequisites
 
-- Python 3.11+ 
-- Docker & Docker Compose 
-- AWS CLI (for production integration) 
+- Python 3.11+
+- Docker & Docker Compose
+- AWS CLI (for production integration)
 
 ## Architecture Overview
 

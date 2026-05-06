@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11-slim as builder
+FROM python:3.11-slim # Stage 2: Production runtime as builder # Stage 1: Build virtual env
 
 # Set the working directory in the container
 WORKDIR /app
@@ -12,7 +12,7 @@ COPY app/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Final stage
-FROM python:3.11-slim
+FROM python:3.11-slim # Stage 2: Production runtime
 
 # Create a non-root user for security
 RUN groupadd -r serviceuser && useradd -r -g serviceuser serviceuser

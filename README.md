@@ -1,54 +1,77 @@
-[![Lint](https://github.com/harrison-vc/cloud-service-baseline/actions/workflows/lint.yml/badge.svg)](https://github.com/harrison-vc/cloud-service-baseline/actions/workflows/lint.yml)
+# Cloud Service Baseline
 
-# cloud-service-baseline
+A reference architecture for a minimal but production-ready cloud service. This repository provides a baseline for deploying, monitoring, and troubleshooting cloud-native applications with a focus on security, observability, and operational excellence.
 
-A minimal but production-ready cloud system architecture. This repository serves as a baseline for deploying, monitoring, and troubleshooting cloud-native applications.
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![systemd](https://img.shields.io/badge/systemd-1A1A1A?style=for-the-badge&logo=linux&logoColor=white)](https://systemd.io/)
+[![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://www.linux.org/)
+[![DevOps](https://img.shields.io/badge/DevOps-007ACC?style=for-the-badge)](https://en.wikipedia.org/wiki/DevOps)
 
-## Prerequisites
+## System Architecture
 
-- Python 3.11+
-- Docker & Docker Compose
-- AWS CLI (for production integration)
+- **Application Layer**: Python-based FastAPI application providing secure REST endpoints and integrated health checks.
+- **Deployment Models**: Optimized for both containerized (Docker) and bare-metal/VM (systemd) environments.
+- **Security Hardening**: Implementation of the Principle of Least Privilege (POLP) at the service and infrastructure levels.
+- **Observability**: Structured JSON logging, automated health monitoring, and performance tracking.
 
-## Architecture Overview
+## Core Features
 
-- **Application**: Python (FastAPI) providing REST endpoints and health checks.
-- **Server Architecture**: Designed for deployment on Linux VMs (Ubuntu/Debian) or within containers (Docker).
-- **Security**: Principle of Least Privilege (POLP) applied at the service level (systemd hardening).
-- **Observability**: Structured JSON logging and `/health` endpoint for external monitoring.
+- **Hardened Systemd Configuration**: Production-grade unit files with sandboxing and resource limits.
+- **Infrastructure as Code**: Terraform modules for automated AWS resource provisioning.
+- **Containerization**: Multi-stage Docker builds for minimal image size and reduced attack surface.
+- **Health and Readiness**: Dedicated endpoints for integration with load balancers and service meshes.
 
-## Failure Domains
+## Operational Triage Workflow
 
-Understanding where things can fail is the first step to high availability.
+When a service failure occurs, follow this systematic diagnostic approach:
 
-1. **Network**: VPC peering, DNS resolution, and security group/firewall rules.
-2. **Identity**: IAM role/service account permissions (S3, RDS, CloudWatch).
-3. **Application**: Logic crashes, runtime exceptions, and resource leaks.
-4. **Dependencies**: Upstream API failures, database connection timeouts.
+1. **Connectivity Verification**:
+   - Check external reachability: `curl -I http://<host>:<port>/health`
+   - Validate local binding: `ss -tulpn | grep <port>`
+2. **Process Integrity**:
+   - Check service status: `systemctl status cloud-service` or `docker ps`
+3. **Resource Inspection**:
+   - Analyze Disk (`df -h`), Memory (`free -h`), and CPU (`top`) usage to identify resource exhaustion.
+4. **Log Analysis**:
+   - Inspect real-time application logs: `journalctl -u cloud-service -f`
 
-## Triage Workflow (Step-by-Step)
+## Setup and Installation
 
-When this application fails, follow this systematic approach:
+### Local Development
+1. Install requirements:
+   ```bash
+   pip install -r app/requirements.txt
+   ```
+2. Run the application:
+   ```bash
+   python app/app.py
+   ```
 
-1. **Isolate the Fault Domain**:
-   - External reachability check: `curl -I http://<ip>:<port>/health`
-   - Local reachability check: `curl -I http://localhost:<port>/health` (SSH required)
-2. **Verify Process State**:
-   - `systemctl status service-baseline` or `docker ps`
-3. **Check Resource Utilization**:
-   - `df -h` (Disk), `free -h` (Memory), `top` (CPU)
-4. **Examine Recent Logs**:
-   - `journalctl -u service-baseline -f --no-pager`
+### Production Deployment (systemd)
+1. Copy the unit file: `cp deploy/systemd/cloud-service.service /etc/systemd/system/`
+2. Enable and start the service:
+   ```bash
+   systemctl daemon-reload
+   systemctl enable --now cloud-service
+   ```
 
-## Troubleshooting Section
+### Containerized Deployment
+```bash
+docker-compose up --build -d
+```
 
-- **"App Not Reachable"**: Check security group (Ingress on port 8000), VPC routing, and listener binding (`ss -tulpn`).
-- **"Access Denied"**: Verify IAM role association and policy resource ARNs.
-- **"App Crash"**: Investigate logs for `ModuleNotFound`, `KeyError`, or `PermissionDenied`.
-- **"Timeout"**: Check upstream service status and internal worker thread availability.
+## Repository Structure
 
-## Setup Instructions
+- `app/`: FastAPI application source code and business logic.
+- `deploy/`: Production deployment artifacts (systemd, configurations).
+- `infra/`: Terraform modules for cloud infrastructure provisioning.
+- `scripts/`: Operational scripts for maintenance and deployment automation.
+- `tests/`: Comprehensive test suite covering unit and integration tests.
 
-1. **Install Dependencies**: `pip install -r app/requirements.txt`
-2. **Launch Locally**: `python app/app.py`
-3. **Systemd Setup**: Copy `deploy/systemd/service-baseline.service` to `/etc/systemd/system/` and run `systemctl enable --now service-baseline`.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

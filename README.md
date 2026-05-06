@@ -49,6 +49,6 @@ When this application fails, follow this systematic approach:
 
 ## Setup Instructions
 
-1. **Install Dependencies**: `pip install -r requirements.txt`
+1. **Install Dependencies**: `pip install -r app/requirements.txt`
 2. **Launch Locally**: `python app/app.py`
 3. **Systemd Setup**: Copy `deploy/systemd/service-baseline.service` to `/etc/systemd/system/` and run `systemctl enable --now service-baseline`.

@@ -1,10 +1,23 @@
+import asyncio
 import logging
 import os
 import time
 
 from fastapi import FastAPI, HTTPException
 
-# Structured Logging Setup
+# Ensure logs without explicit request metadata still format cleanly.
+_record_factory = logging.getLogRecordFactory()
+
+
+def _with_default_request_id(*args, **kwargs):
+    record = _record_factory(*args, **kwargs)
+    if not hasattr(record, "request_id"):
+        record.request_id = "n/a"
+    return record
+
+
+logging.setLogRecordFactory(_with_default_request_id)
+
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO"),
     format="%(asctime)s - %(name)s - %(levelname)s - [%(request_id)s] - %(message)s",
@@ -40,7 +53,7 @@ async def get_data(request_id: str = "unknown"):
     logger.info("Processing data request", extra=extra)
 
     # Simulate work
-    time.sleep(0.05)
+    await asyncio.sleep(0.05)
 
     return {"data": "Cloud Service Baseline Result", "request_id": request_id}
 
@@ -57,7 +70,7 @@ async def toggle_health(healthy: bool):
 async def simulate_timeout(delay: int = 40):
     """Endpoint to simulate slow responses for timeout testing."""
     logger.warning(f"Simulating timeout with {delay}s delay")
-    time.sleep(delay)
+    await asyncio.sleep(delay)
     return {"status": "delayed"}
 
 

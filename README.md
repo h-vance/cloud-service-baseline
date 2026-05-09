@@ -44,4 +44,4 @@ This repository provides a reference implementation for hardened production serv
 - `scripts/`: Operational scripts for maintenance and deployment automation.
 - `tests/`: Comprehensive test suite covering unit and integration tests.
 
-**Developed By:** Harrison Vance Collender • Solutions Architect
+**Developed By:** Harrison Vance Collender • Technical Operations | Infrastructure Lead

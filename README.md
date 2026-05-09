@@ -1,7 +1,7 @@
 <center>
 <h1>Cloud Service Baseline</h1>
 <p><em>Production-ready AWS baseline infrastructure with automated security and compliance guardrails.</em></p>
-<img src="https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform">&nbsp;<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS">&nbsp;<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">&nbsp;<img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions">&nbsp;<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+<img src="https://custom-icon-badges.demolab.com/badge/Terraform-18181b.svg?logo=terraform&logoColor=white"> <img src="https://custom-icon-badges.demolab.com/badge/AWS-18181b.svg?logo=aws&logoColor=white"> <img src="https://custom-icon-badges.demolab.com/badge/Docker-18181b.svg?logo=docker&logoColor=white"> <img src="https://custom-icon-badges.demolab.com/badge/GitHub_Actions-18181b.svg?logo=githubactions&logoColor=white">
 </center>
 
 ---

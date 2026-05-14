@@ -8,7 +8,7 @@ A reference implementation for validating that a cloud service meets operational
 
 ## Structure
 
-```
+```text
 .
 ├── app/
 │   ├── app.py                      # Flask API with health and readiness endpoints
@@ -46,4 +46,4 @@ docker-compose up
 ```
 
 ---
-*Maintained by Harrison Vance — Technical Support & Operations*
+Maintained by Harrison Vance — Technical Support & Operations

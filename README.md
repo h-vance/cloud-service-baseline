@@ -2,7 +2,7 @@
 
 > **Baseline health validation and configuration verification for cloud service deployments.**
 
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=FFFFFF)](https://python.org)&nbsp;[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=FFFFFF)](https://docker.com)&nbsp;[![Terraform](https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=Terraform&logoColor=FFFFFF)](https://terraform.io)&nbsp;[![GNU Bash](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=GNU+Bash&logoColor=FFFFFF)](https://www.gnu.org/software/bash/)&nbsp;[![Linux](https://img.shields.io/badge/Linux-222222?style=for-the-badge&logo=Linux&logoColor=FCC624)](https://kernel.org)
+[![Python](https://www.shieldcn.dev/badge/Python-3776AB.svg?variant=default&logo=Python&logoColor=FFFFFF&size=xs)](https://python.org)&nbsp;[![Docker](https://www.shieldcn.dev/badge/Docker-2496ED.svg?variant=default&logo=Docker&logoColor=FFFFFF&size=xs)](https://docker.com)&nbsp;[![Terraform](https://www.shieldcn.dev/badge/Terraform-844FBA.svg?variant=default&logo=Terraform&logoColor=FFFFFF&size=xs)](https://terraform.io)&nbsp;[![GNU Bash](https://www.shieldcn.dev/badge/GNU%20Bash-4EAA25.svg?variant=default&logo=GNU+Bash&logoColor=FFFFFF&size=xs)](https://www.gnu.org/software/bash/)&nbsp;[![Linux](https://www.shieldcn.dev/badge/Linux-222222.svg?variant=default&logo=Linux&logoColor=FCC624&size=xs)](https://kernel.org)
 
 ---
 

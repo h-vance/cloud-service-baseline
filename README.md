@@ -198,7 +198,8 @@ The test suite covers:
 | ---------- | ----------- |
 | [**self-healing-microservices-cluster**](https://github.com/h-vance/self-healing-microservices-cluster) | Automated infrastructure recovery and observability for containerized microservices |
 | [**ops-diagnostics**](https://github.com/h-vance/ops-diagnostics) | Python & Bash diagnostic scripts for automated health verification, log analysis, and system profiling |
-| [**systems-debugging-framework**](https://github.com/h-vance/systems-debugging-framework) | Structured triage checklists for network, system, and application fault isolation |
+| [**cloud-operations-runbook**](https://github.com/h-vance/cloud-operations-runbook) | Structured triage checklists and SOPs for network, system, and application fault isolation |
+| [**incident-postmortems**](https://github.com/h-vance/incident-postmortems) | Blameless RCAs documenting how baseline failures were diagnosed and resolved |
 
 ---
 

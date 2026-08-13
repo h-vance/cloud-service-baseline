@@ -12,7 +12,7 @@
 
 **The Investigation:** Every service had a different idea of what "healthy" meant. Some had no health endpoint at all. Logging was inconsistent. Infrastructure was provisioned manually without security hardening. Onboarding a new service meant reverse-engineering its operational model from scratch.
 
-**The Resolution:** A reference implementation that codifies operational readiness into a single deployable unit — a FastAPI health-check API with structured logging, Terraform-provisioned IAM with least-privilege access, Docker multi-stage builds with a non-root user, systemd integration with security hardening, and a health-check script for monitoring integration.
+**The Resolution:** A reference implementation that codifies operational readiness into a single deployable unit: a FastAPI health-check API with structured logging, Terraform-provisioned IAM with least-privilege access, Docker multi-stage builds with a non-root user, systemd integration with security hardening, and a health-check script for monitoring integration.
 
 ---
 
@@ -20,10 +20,10 @@
 
 | Method | Path | Purpose |
 | ------- | ------ | --------- |
-| GET | `/health` | Load balancer and K8s probe endpoint — returns status, uptime, and version |
+| GET | `/health` | Load balancer and K8s probe endpoint, returns status, uptime, and version |
 | GET | `/api/v1/data` | Sample data endpoint with structured request tracing |
-| POST | `/admin/toggle-health` | Test-only — simulates healthy/unhealthy state |
-| GET | `/api/v1/simulate-timeout` | Test-only — simulates slow responses for timeout testing (default 40s) |
+| POST | `/admin/toggle-health` | Test-only, simulates healthy/unhealthy state |
+| GET | `/api/v1/simulate-timeout` | Test-only, simulates slow responses for timeout testing (default 40s) |
 
 ### Health Check Response
 
@@ -37,7 +37,7 @@ GET /health
 }
 ```
 
-When toggled unhealthy, the endpoint returns `503 Service Unavailable` — allowing load balancers and orchestrators to test their health check failure handling.
+When toggled unhealthy, the endpoint returns `503 Service Unavailable`, allowing load balancers and orchestrators to test their health check failure handling.
 
 ---
 
@@ -60,7 +60,7 @@ terraform apply
 
 ### IAM Policy
 
-The instance role grants only `s3:GetObject` and `s3:ListBucket` — no write or delete permissions. Expand the policy in `iam.tf` as the service's data access requirements grow.
+The instance role grants only `s3:GetObject` and `s3:ListBucket`, with no write or delete permissions. Expand the policy in `iam.tf` as the service's data access requirements grow.
 
 ---
 
@@ -203,4 +203,4 @@ The test suite covers:
 
 ---
 
-Maintained by Harrison Vance — Technical Support & Operations
+Maintained by Harrison Vance, Technical Support Engineer

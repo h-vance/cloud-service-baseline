@@ -19,7 +19,8 @@ jobs:
         with:
           node-version: "22"
       - name: Run Markdownlint
-        run: npx --yes markdownlint-cli2
+        # Pinned so an upstream release cannot redden the build.
+        run: npx --yes markdownlint-cli2@0.23.2
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
@@ -38,6 +39,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ruff
+          # Pinned: ruff makes breaking rule changes in minor
+          # releases, which is how this class of build broke before.
+          pip install 'ruff==0.16.3'
       - name: Run Ruff
         run: ruff check .

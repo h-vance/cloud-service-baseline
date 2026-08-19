@@ -3,3 +3,4 @@
 ^https?://api\.internal\.corp/.*$
 ^https?://api\.corp\.com/.*$
 ^https?://api\.thirdparty\.com/.*$
+^https?://www\.gnu\.org/.*$
